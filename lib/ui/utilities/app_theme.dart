@@ -3,6 +3,8 @@
 
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 import 'app_colors.dart';
 
 abstract class AppTheme {
@@ -16,9 +18,8 @@ abstract class AppTheme {
   static  TextStyle taskTitleTextStyle= TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 22,
-    color: AppColors.primiaryColor,
+    color: AppColors.primiary,
   );
-
 
   static  TextStyle taskDiscreptionTextStyle= TextStyle(
     fontWeight: FontWeight.normal,
@@ -32,7 +33,25 @@ abstract class AppTheme {
     color: AppColors.black,
   );
 
+  static ThemeData lightTheme= ThemeData(
+    primaryColor: AppColors.primiary,
 
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.primiary,
+      elevation: 0,
+      titleTextStyle: appBarTextStyle
+    ),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedIconTheme: IconThemeData(size: 32),
+      unselectedIconTheme: IconThemeData(size: 32),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      selectedItemColor: AppColors.primiary,
+      unselectedItemColor: AppColors.grey,
+    ),
+    scaffoldBackgroundColor: AppColors.accent,
+  );
 
 
 }
