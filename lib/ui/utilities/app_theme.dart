@@ -52,6 +52,25 @@ abstract class AppTheme {
     ),
     scaffoldBackgroundColor: AppColors.accent,
   );
+  static ThemeData darkTheme= ThemeData(
+    primaryColor: AppColors.primiary,
+
+    appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.primiary,
+        elevation: 0,
+        titleTextStyle: appBarTextStyle
+    ),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedIconTheme: IconThemeData(size: 32),
+      unselectedIconTheme: IconThemeData(size: 32),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      selectedItemColor: AppColors.primiary,
+      unselectedItemColor: AppColors.grey,
+    ),
+    scaffoldBackgroundColor: AppColors.accent,
+  );
 
 
 }
