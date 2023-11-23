@@ -4,8 +4,6 @@ import 'package:productivity_assistant/ui/screens/bottom_sheets/add_sheet.dart';
 import '../../utilities/app_colors.dart';
 import '../../utilities/app_theme.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
-
 class Home extends StatefulWidget {
   static String routeName = "home";
 
@@ -36,22 +34,21 @@ class _HomeState extends State<Home> {
   );
 
   Widget bottomNav () => BottomAppBar(
-
-    notchMargin: 10,
+    notchMargin: 8,
     shape: CircularNotchedRectangle(),
     clipBehavior: Clip.hardEdge,
-
     child: CurvedNavigationBar(
-
-      color: AppColors.primiary,
+       color: AppColors.white,
       backgroundColor: AppColors.accent,
+      buttonBackgroundColor: AppColors.transparent,
       animationDuration: Duration(milliseconds: 400),
-        buttonBackgroundColor: AppColors.primiary,
-        items: [
-      Icon(Icons.menu,size: 20,color: AppColors.white),
-      Icon(Icons.settings,size: 20,color: AppColors.white,),
+        items: const <Widget> [
+           Icon(Icons.menu,size: 28,color: AppColors.primiary,),
+           Icon(Icons.settings ,size:28,color: AppColors.primiary)
 
-    ]),
+
+    ]
+  ),
   );
 
   Widget fab()=> FloatingActionButton(onPressed: (){
