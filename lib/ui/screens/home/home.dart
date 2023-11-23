@@ -43,10 +43,13 @@ class _HomeState extends State<Home> {
 
     child: CurvedNavigationBar(
 
-      animationDuration: Duration(milliseconds: 300),
+      color: AppColors.primiary,
+      backgroundColor: AppColors.accent,
+      animationDuration: Duration(milliseconds: 400),
+        buttonBackgroundColor: AppColors.primiary,
         items: [
-      Icon(Icons.menu,size: 20,),
-      Icon(Icons.settings,size: 20,),
+      Icon(Icons.menu,size: 20,color: AppColors.white),
+      Icon(Icons.settings,size: 20,color: AppColors.white,),
 
     ]),
   );

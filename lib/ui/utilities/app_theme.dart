@@ -6,6 +6,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 
 abstract class AppTheme {
 
@@ -42,14 +44,7 @@ abstract class AppTheme {
       titleTextStyle: appBarTextStyle
     ),
 
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedIconTheme: IconThemeData(size: 32),
-      unselectedIconTheme: IconThemeData(size: 32),
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedItemColor: AppColors.primiary,
-      unselectedItemColor: AppColors.grey,
-    ),
+
     scaffoldBackgroundColor: AppColors.accent,
 
     floatingActionButtonTheme: FloatingActionButtonThemeData(
