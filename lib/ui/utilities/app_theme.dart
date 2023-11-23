@@ -51,6 +51,13 @@ abstract class AppTheme {
       unselectedItemColor: AppColors.grey,
     ),
     scaffoldBackgroundColor: AppColors.accent,
+
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: StadiumBorder(side: BorderSide(
+        color: AppColors.white,
+        width: 4
+      ))
+    ),
   );
   static ThemeData darkTheme= ThemeData(
     primaryColor: AppColors.primiary,
@@ -62,8 +69,8 @@ abstract class AppTheme {
     ),
 
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedIconTheme: IconThemeData(size: 32),
-      unselectedIconTheme: IconThemeData(size: 32),
+      selectedIconTheme: IconThemeData(size: 26),
+      unselectedIconTheme: IconThemeData(size: 26),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       selectedItemColor: AppColors.primiary,
