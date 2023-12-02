@@ -35,6 +35,14 @@ abstract class AppTheme {
     color: AppColors.black,
   );
 
+  static  TextStyle bottomSheetHintTextStyle=  TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 20,
+    color: AppColors.grey,
+  );
+
+
+
   static ThemeData lightTheme= ThemeData(
     primaryColor: AppColors.primiary,
 

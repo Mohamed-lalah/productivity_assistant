@@ -52,7 +52,12 @@ class _HomeState extends State<Home> {
   );
 
   Widget fab()=> FloatingActionButton(onPressed: (){
-    showModalBottomSheet(context: context, builder: (_) => AddSheet());
+    showModalBottomSheet(context: context,
+        isScrollControlled: true,
+        builder: (_) => Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: AddSheet(),
+        ));
 
   } , child: Icon(Icons.add),
      );
