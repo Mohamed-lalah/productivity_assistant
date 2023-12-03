@@ -52,10 +52,15 @@ abstract class AppTheme {
       titleTextStyle: appBarTextStyle
     ),
 
+    dividerTheme: DividerThemeData(
+      thickness: 3,
+      color: AppColors.primiary
+    ),
+
 
     scaffoldBackgroundColor: AppColors.accent,
 
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       shape: StadiumBorder(side: BorderSide(
         color: AppColors.white,
         width: 4

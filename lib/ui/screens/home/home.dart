@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:productivity_assistant/ui/screens/bottom_sheets/add_sheet.dart';
+import 'package:productivity_assistant/ui/screens/home/tabs/lists/list_tab.dart';
+import 'package:productivity_assistant/ui/screens/home/tabs/settings/setting_tab.dart';
 
 import '../../utilities/app_colors.dart';
 import '../../utilities/app_theme.dart';
@@ -12,6 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int currentSelectedTabIndex=0;
   @override
   Widget build(BuildContext context) {
     double height= MediaQuery.of(context).size.height;
@@ -19,6 +22,7 @@ class _HomeState extends State<Home> {
 
 
     return Scaffold(
+      body: currentSelectedTabIndex ==0 ? ListTab() : SettingTab(),
       appBar:buildAppBar (),
       bottomNavigationBar: bottomNav(),
       floatingActionButton: fab(),
@@ -37,16 +41,17 @@ class _HomeState extends State<Home> {
     notchMargin: 8,
     shape: CircularNotchedRectangle(),
     clipBehavior: Clip.hardEdge,
-    child: CurvedNavigationBar(
-       color: AppColors.white,
-      backgroundColor: AppColors.accent,
-      buttonBackgroundColor: AppColors.transparent,
-      animationDuration: Duration(milliseconds: 400),
-        items: const <Widget> [
-           Icon(Icons.menu,size: 28,color: AppColors.primiary,),
-           Icon(Icons.settings ,size:28,color: AppColors.primiary)
 
 
+    child: BottomNavigationBar(
+      onTap: (index){
+       currentSelectedTabIndex=index;
+       setState(() {});
+      },
+        currentIndex: currentSelectedTabIndex,
+        items: const [
+          BottomNavigationBarItem(icon:  Icon(Icons.menu),label: "",),
+          BottomNavigationBarItem(icon:  Icon(Icons.settings ),label: "",),
     ]
   ),
   );

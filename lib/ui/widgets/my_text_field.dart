@@ -16,14 +16,14 @@ class MyTextField extends StatelessWidget {
       padding:  EdgeInsets.only(left: width*0.06, right:width*0.06 ),
       child: TextField(
         decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(
+            enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: AppColors.lightBlack,
                   width: 1,
 
                 )
             ),
-            focusedBorder: UnderlineInputBorder(
+            focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: AppColors.lightBlack,
                   width: 1,
