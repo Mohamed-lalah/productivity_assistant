@@ -29,6 +29,8 @@ class ToDoWidgets extends StatelessWidget {
              Padding(
                padding:  EdgeInsets.all(width*0.02),
                child: Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Play BasketBall",style: AppTheme.taskTitleTextStyle,),
                   SizedBox(height: height*0.01,),
@@ -38,10 +40,9 @@ class ToDoWidgets extends StatelessWidget {
              ),
             Spacer(),
             Container(
-              width: 69,
-                height: 34,
+              padding: EdgeInsets.symmetric(horizontal: 18,vertical: 5),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(20),
                   color: AppColors.primiary,
                 ),
                 child: Icon(Icons.check,color: AppColors.white,size: 35,))

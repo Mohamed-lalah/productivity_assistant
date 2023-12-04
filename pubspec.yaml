@@ -18,6 +18,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   curved_navigation_bar: ^1.0.3
+  flutter_slidable: ^3.0.1
 
   flutter_lints: ^2.0.0
 
