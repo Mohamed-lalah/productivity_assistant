@@ -14,6 +14,7 @@ class ToDoWidgets extends StatelessWidget {
       padding:  EdgeInsets.all(height*0.02),
       child: Slidable(
         startActionPane:  ActionPane(
+          extentRatio: 0.4,
             motion: BehindMotion(),
             children:[
              SlidableAction(onPressed: (_){}

@@ -14,11 +14,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late double height;
+  late double width;
   int currentSelectedTabIndex=0;
   @override
   Widget build(BuildContext context) {
-    double height= MediaQuery.of(context).size.height;
-    double width= MediaQuery.of(context).size.width;
+   height = MediaQuery.of(context).size.height;
+    width= MediaQuery.of(context).size.width;
 
 
     return Scaffold(
@@ -34,6 +36,7 @@ class _HomeState extends State<Home> {
 
   PreferredSizeWidget buildAppBar () => AppBar(
     title: const Text("To Do List "),
+    toolbarHeight: height*0.1,
 
   );
 

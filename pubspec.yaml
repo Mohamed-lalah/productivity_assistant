@@ -19,6 +19,7 @@ dev_dependencies:
     sdk: flutter
   curved_navigation_bar: ^1.0.3
   flutter_slidable: ^3.0.1
+  calendar_timeline: ^1.1.2
 
   flutter_lints: ^2.0.0
 

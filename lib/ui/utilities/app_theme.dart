@@ -49,7 +49,7 @@ abstract class AppTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primiary,
       elevation: 0,
-      titleTextStyle: appBarTextStyle
+      titleTextStyle: appBarTextStyle,
     ),
 
     dividerTheme: DividerThemeData(
