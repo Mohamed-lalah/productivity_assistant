@@ -6,7 +6,8 @@ class MyTextField extends StatelessWidget {
 
 
   String? hint;
-  MyTextField({ this.hint});
+  late TextEditingController controller;
+  MyTextField({ this.hint, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.only(left: width*0.06, right:width*0.06 ),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
             enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
