@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:productivity_assistant/model/todo_model.dart';
 import 'package:productivity_assistant/ui/utilities/app_colors.dart';
 import 'package:productivity_assistant/ui/utilities/app_theme.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 class ToDoWidgets extends StatelessWidget {
-  const ToDoWidgets({super.key});
+  final TodoDm model ;
+  const ToDoWidgets({super.key , required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +48,9 @@ class ToDoWidgets extends StatelessWidget {
                    mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Play BasketBall",style: AppTheme.taskTitleTextStyle,),
+                    Text(model.title,style: AppTheme.taskTitleTextStyle,),
                     SizedBox(height: height*0.01,),
-                    Text("Date",style: AppTheme.taskDiscreptionTextStyle)
+                    Text(model.descreption,style: AppTheme.taskDiscreptionTextStyle)
                   ],
               ),
                ),

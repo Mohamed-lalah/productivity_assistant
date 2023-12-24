@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:productivity_assistant/model/todo_model.dart';
 import 'package:productivity_assistant/ui/utilities/app_colors.dart';
 import 'package:productivity_assistant/ui/utilities/app_theme.dart';
 import 'package:productivity_assistant/ui/widgets/my_text_field.dart';
@@ -39,7 +40,7 @@ class _AddSheetState extends State<AddSheet> {
 
           Padding(
             padding:  EdgeInsets.only(left: width*0.08),
-            child: Text("${selectedDate.day}/${selectedDate.month}/${selectedDate.year}", style: AppTheme.bottomSheetTitleTextStyle.copyWith(
+            child: Text("selected date ", style: AppTheme.bottomSheetTitleTextStyle.copyWith(
               fontWeight: FontWeight.normal
             ),),
           ),
@@ -49,7 +50,7 @@ class _AddSheetState extends State<AddSheet> {
             onTap: (){
               showMyDatePicker();
             },
-            child: Text("$selectedDate",textAlign: TextAlign.center,style: AppTheme.bottomSheetTitleTextStyle.copyWith(
+            child: Text("${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",textAlign: TextAlign.center,style: AppTheme.bottomSheetTitleTextStyle.copyWith(
               color: AppColors.grey
             ),),
           ),
@@ -66,14 +67,14 @@ class _AddSheetState extends State<AddSheet> {
 
   void addToFireStore(){
     CollectionReference todosCollectionRef=
-    FirebaseFirestore.instance.collection("todos");
+    FirebaseFirestore.instance.collection(TodoDm.collectionName);
 
     DocumentReference newEmptyDoc = todosCollectionRef.doc();
     newEmptyDoc.set({
       "title":  titleController.text,
       "descreption" : descreptionController.text,
       "date" : selectedDate,
-      "id " : newEmptyDoc.id,
+      "id" : newEmptyDoc.id,
       "isDone": false,
     }).timeout(Duration(milliseconds: 300),onTimeout: (){
       Navigator.pop(context);
