@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:productivity_assistant/providers/list_provider.dart';
+import 'package:productivity_assistant/ui/screens/auth/login/login_screen.dart';
+import 'package:productivity_assistant/ui/screens/auth/register/register_screen.dart';
 import 'package:productivity_assistant/ui/screens/home/home.dart';
 import 'package:productivity_assistant/ui/screens/splash/splash.dart';
 import 'package:productivity_assistant/ui/utilities/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -12,12 +16,18 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseFirestore.instance.disableNetwork();
+
   FirebaseFirestore.instance.settings =
       Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
 
 
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (_) {
+        return ListProvider();
+      },
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,8 +43,10 @@ class MyApp extends StatelessWidget {
       routes:{
         Splash.routeName : (_)=> Splash(),
         Home.routeName  : (_)=>Home(),
+        Register.routeName: (_)=>Register(),
+        Login.routeName: (_)=>Login(),
       },
-      initialRoute:Home.routeName
+      initialRoute:Register.routeName
 
     );
   }

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_assistant/model/todo_model.dart';
+import 'package:productivity_assistant/providers/list_provider.dart';
 import 'package:productivity_assistant/ui/utilities/app_colors.dart';
 import 'package:productivity_assistant/ui/utilities/app_theme.dart';
 import 'package:productivity_assistant/ui/widgets/my_text_field.dart';
+import 'package:provider/provider.dart';
 
 class AddSheet extends StatefulWidget {
 
@@ -18,11 +20,13 @@ class _AddSheetState extends State<AddSheet> {
 
   DateTime selectedDate= DateTime.now();
 
+  late ListProvider provider ;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
+    provider= Provider.of(context);
 
     return Container(
       height: height*0.45,
@@ -77,6 +81,7 @@ class _AddSheetState extends State<AddSheet> {
       "id" : newEmptyDoc.id,
       "isDone": false,
     }).timeout(Duration(milliseconds: 300),onTimeout: (){
+      provider.refreshTodos();
       Navigator.pop(context);
     });
   }
