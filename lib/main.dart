@@ -43,10 +43,10 @@ class MyApp extends StatelessWidget {
       routes:{
         Splash.routeName : (_)=> Splash(),
         Home.routeName  : (_)=>Home(),
-        Register.routeName: (_)=>Register(),
-        Login.routeName: (_)=>Login(),
+        RegisterScreen.routeName: (_)=>RegisterScreen(),
+        LoginScreen.routeName: (_)=>LoginScreen(),
       },
-      initialRoute:Register.routeName
+      initialRoute:RegisterScreen.routeName
 
     );
   }
