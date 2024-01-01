@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../../../model/app_user.dart';
 import '../../../utilities/app_colors.dart';
 import '../../../utilities/app_theme.dart';
+import '../../../utilities/dialog_screen.dart';
+import '../../home/home.dart';
 import '../register/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -113,6 +116,33 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  void login() {}
+  void login() async {
+    try{
+      showLoading(context);
+      UserCredential userCredential=
+          await  FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text);
+
+      AppUser CurrentUser = await getUserFromFireStore(userCredential.user!.uid);
+      AppUser.currentUser= CurrentUser;
+
+      hideLoading(context);
+      Navigator.pushReplacementNamed(context, Home.routeName);
+    }
+    on FirebaseAuthException catch (error){
+      hideLoading(context);
+      showErrorDialog(error.message??"Please try again later", context);
+
+    }
+  }
+
+  Future<AppUser> getUserFromFireStore(String id ) async{
+   CollectionReference <AppUser> userCollection = AppUser.collectionReference();
+   DocumentSnapshot <AppUser> documentSnapshot = await userCollection.doc(id).get();
+   return documentSnapshot.data()!;
+
+
+  }
 
 }

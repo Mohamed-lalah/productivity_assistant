@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:productivity_assistant/ui/screens/home/home.dart';
 import 'package:productivity_assistant/ui/utilities/dialog_screen.dart';
 
 
@@ -140,15 +141,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
           email: emailController.text,
           password: passwordController.text);
 
-
     AppUser user= AppUser(
         userName: nameController.text,
         email: emailController.text,
         id: userCredential.user!.uid);
 
-
     await registerUserInFireStore(user);
+    AppUser.currentUser= user;
           hideLoading(context);
+     Navigator.pushReplacementNamed(context, Home.routeName);
     }
       on FirebaseAuthException catch (error){
       hideLoading(context);
@@ -161,10 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future registerUserInFireStore(AppUser user)async {
    CollectionReference<AppUser> userRefrence =AppUser.collectionReference();
-   userRefrence.add(user);
-    DocumentReference userDoc =  await userRefrence.doc(user.id);
-   userDoc.set(user);
-
+   await  userRefrence.doc(user.id).set(user);
 
 
 

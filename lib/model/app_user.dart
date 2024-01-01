@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppUser {
  static const String collectionName  = "AppUser";
+ static AppUser? currentUser;
  late String userName ;
  late String email;
  late String id;
