@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:productivity_assistant/providers/list_provider.dart';
 import 'package:productivity_assistant/ui/screens/auth/login/login_screen.dart';
 import 'package:productivity_assistant/ui/screens/auth/register/register_screen.dart';
+import 'package:productivity_assistant/ui/screens/edit_task/edit_task_screen.dart';
 import 'package:productivity_assistant/ui/screens/home/home.dart';
 import 'package:productivity_assistant/ui/screens/splash/splash.dart';
 import 'package:productivity_assistant/ui/utilities/app_theme.dart';
@@ -17,9 +18,10 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-
   FirebaseFirestore.instance.settings =
       Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
+  
+  await FirebaseFirestore.instance.disableNetwork();
 
 
 
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
         Home.routeName  : (_)=>Home(),
         RegisterScreen.routeName: (_)=>RegisterScreen(),
         LoginScreen.routeName: (_)=>LoginScreen(),
+        EditTaskScreen.routeName: (_)=>EditTaskScreen(),
       },
       initialRoute:RegisterScreen.routeName
 

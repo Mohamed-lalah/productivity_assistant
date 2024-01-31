@@ -133,7 +133,6 @@ class _LoginScreenState extends State<LoginScreen> {
     on FirebaseAuthException catch (error){
       hideLoading(context);
       showErrorDialog(error.message??"Please try again later", context);
-
     }
   }
 
@@ -141,8 +140,6 @@ class _LoginScreenState extends State<LoginScreen> {
    CollectionReference <AppUser> userCollection = AppUser.collectionReference();
    DocumentSnapshot <AppUser> documentSnapshot = await userCollection.doc(id).get();
    return documentSnapshot.data()!;
-
-
   }
 
 }
