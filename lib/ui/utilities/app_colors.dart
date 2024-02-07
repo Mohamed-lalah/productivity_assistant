@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   static const Color primiary= Color(0xff5D9CEC);
+  static const Color selectedColor = Color(0xff61E757);
   static const Color accent= Color(0xffddeada);
   static const Color white= Colors.white;
   static const Color transparent= Colors.transparent;

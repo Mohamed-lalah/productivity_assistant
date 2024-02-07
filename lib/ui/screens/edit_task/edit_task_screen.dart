@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_assistant/model/todo_model.dart';
+import 'package:productivity_assistant/providers/list_provider.dart';
+import 'package:productivity_assistant/ui/screens/home/tabs/lists/list_tab.dart';
+import 'package:provider/provider.dart';
 
 import '../../utilities/app_colors.dart';
 
@@ -13,6 +16,7 @@ class EditTaskScreen extends StatefulWidget {
 }
 
 class _EditTaskScreenState extends State<EditTaskScreen> {
+  late ListProvider editProvider ;
 
 
   @override
@@ -20,6 +24,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     double height=  MediaQuery.of(context).size.height;
     double width=  MediaQuery.of(context).size.width;
     TodoDm item= ModalRoute.of(context)?.settings.arguments as TodoDm;
+    editProvider= Provider.of(context);
 
     return Scaffold(
       body: Stack(
@@ -78,9 +83,9 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                     padding:  EdgeInsets.only(left: width*0.06, right:width*0.06 ),
                     child: TextFormField(
                       onChanged: (value){
-                        item.descreption=value;
+                        item.desc=value;
                       },
-                      initialValue: item.descreption,
+                      initialValue: item.desc,
                       decoration: const InputDecoration(
                         enabledBorder:  UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -113,7 +118,9 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                       child: Text("${item.dateTime.day}-${item.dateTime.month}-${item.dateTime.year}")),
                   SizedBox(height: 80,),
                   ElevatedButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        editProvider.updateDocument(item);
+                      },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)

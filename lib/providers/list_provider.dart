@@ -10,6 +10,7 @@ class ListProvider extends ChangeNotifier{
    late DateTime calenderDate =DateTime.now();
 
   void refreshTodos()async{
+
     CollectionReference<TodoDm> todosCollection =
     AppUser.collectionReference().doc(AppUser.currentUser!.id).collection(TodoDm.collectionName).
     withConverter<TodoDm>(
@@ -40,5 +41,13 @@ class ListProvider extends ChangeNotifier{
        }
      } ).toList();
     notifyListeners();
+  }
+
+  void updateDocument (TodoDm todoDm) async{
+    CollectionReference todosCollection = AppUser.getCurrentUserTodosCollection();
+    todosCollection.doc(todoDm.id).update(todoDm.tojson()).then((value) {
+      refreshTodos();
+      notifyListeners();
+    });
   }
 }

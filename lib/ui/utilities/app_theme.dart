@@ -52,10 +52,6 @@ abstract class AppTheme {
       titleTextStyle: appBarTextStyle,
     ),
 
-    dividerTheme: DividerThemeData(
-      thickness: 3,
-      color: AppColors.primiary
-    ),
 
 
     scaffoldBackgroundColor: AppColors.accent,

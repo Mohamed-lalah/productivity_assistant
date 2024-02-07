@@ -80,7 +80,7 @@ class _AddSheetState extends State<AddSheet> {
     DocumentReference newEmptyDoc = todosCollectionRef.doc();
    await newEmptyDoc.set({
       "title":  titleController.text,
-      "descreption" : descreptionController.text,
+      "desc" : descreptionController.text,
       "date" : selectedDate,
       "id" : newEmptyDoc.id,
       "isDone": false,
