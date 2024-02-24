@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../../model/app_user.dart';
 import '../../../utilities/app_colors.dart';
 import '../../../utilities/app_theme.dart';
 import '../../../utilities/dialog_screen.dart';
 import '../../home/home.dart';
 import '../register/register_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = "login";
@@ -30,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     backgroundColor: AppColors.primiary,
     toolbarHeight: MediaQuery.of(context).size.height * .12,
     title:  Text(
-      "To Do",
+     AppLocalizations.of(context)!.title,
       style: AppTheme.appBarTextStyle,
     ),
   );
@@ -43,12 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'ToDo Login',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30),
+                child:  Text(
+                    AppLocalizations.of(context)!.login,
+                  style: GoogleFonts.almarai(
+                    textStyle: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 30),
+                  )
                 )),
             const SizedBox(
               height: 18,
@@ -57,9 +61,9 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: emailController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'E-mail',
+                  labelText: AppLocalizations.of(context)!.emailAddress,
                 ),
               ),
             ),
@@ -68,16 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
               child: TextField(
                 obscureText: true,
                 controller: passwordController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Password',
+                  labelText: AppLocalizations.of(context)!.password,
                 ),
               ),
             ),
             TextButton(
               onPressed: () {},
-              child: const Text(
-                'Forgot Password',
+              child:  Text(
+              AppLocalizations.of(context)!.forgotPassword,
               ),
             ),
             Container(
@@ -89,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     MaterialStateProperty.all<Color>(AppColors.primiary),
                   ),
                   child:  Text(
-                    'Login',
+                    AppLocalizations.of(context)!.login,
                     style: AppTheme.appBarTextStyle,
                   ),
                   onPressed: () {
@@ -99,10 +103,10 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text('Does not have account?'),
+                 Text(AppLocalizations.of(context)!.doesnotHaveAccount),
                 TextButton(
-                  child: const Text(
-                    'Create Account',
+                  child:  Text(
+                    AppLocalizations.of(context)!.createOne,
                     style: TextStyle(fontSize: 16),
                   ),
                   onPressed: () {
@@ -132,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     on FirebaseAuthException catch (error){
       hideLoading(context);
-      showErrorDialog(error.message??"Please try again later", context);
+      showErrorDialog(error.message??AppLocalizations.of(context)!.pleaseTryAgainLater, context);
     }
   }
 

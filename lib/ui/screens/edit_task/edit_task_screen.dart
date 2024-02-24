@@ -6,6 +6,9 @@ import 'package:productivity_assistant/ui/screens/home/tabs/lists/list_tab.dart'
 import 'package:provider/provider.dart';
 
 import '../../utilities/app_colors.dart';
+import '../../utilities/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class EditTaskScreen extends StatefulWidget {
   const EditTaskScreen({super.key});
@@ -34,7 +37,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
             mainAxisSize:MainAxisSize.min,
             children: [
               AppBar(
-                title: const Text("Productivity Assistant "),
+                title:  Text(AppLocalizations.of(context)!.title,style: AppTheme.editTitle,),
                 flexibleSpace: SizedBox(height: 175,),
               )
             ],
@@ -50,7 +53,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(child: Text("Edit Task ",)),
+                  Center(child: Text(AppLocalizations.of(context)!.editTask,style: AppTheme.editTask,)),
               SizedBox(height: 40,),
               Padding(
               padding:  EdgeInsets.only(left: width*0.06, right:width*0.06 ),
@@ -58,7 +61,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                 onChanged: (value){
                   item.title=value;
                 },
-                initialValue: item.title,
+                initialValue: item.title,style: AppTheme.hintTitle,
                 decoration: const InputDecoration(
                     enabledBorder:  UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -85,7 +88,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                       onChanged: (value){
                         item.desc=value;
                       },
-                      initialValue: item.desc,
+                      initialValue: item.desc,style: AppTheme.hintTitle,
                       decoration: const InputDecoration(
                         enabledBorder:  UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -108,14 +111,15 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                   SizedBox(height: 50,),
                   Padding(
                     padding: EdgeInsets.only(right: width*0.5),
-                    child: Text("Select time ",),
+                    child: Text(AppLocalizations.of(context)!.selectTime,style: AppTheme.hintTitle,),
                   ),
                   SizedBox(height: 20,),
                   InkWell(
                     onTap: (){
                       showMyDatePickerForEdit(item);
                     },
-                      child: Text("${item.dateTime.day}-${item.dateTime.month}-${item.dateTime.year}")),
+                      child: Text("${item.dateTime.day}-${item.dateTime.month}-${item.dateTime.year}",
+                      style: AppTheme.timeEdit,)),
                   SizedBox(height: 80,),
                   ElevatedButton(
                       onPressed: (){
@@ -127,7 +131,9 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                     ),
                     fixedSize: Size(300, 50)
                   ),
-                      child: Text("Save Changes",
+                      child: Text(AppLocalizations.of(context)!.saveChanges,style: AppTheme.timeEdit.copyWith(
+                        color: AppColors.white
+                      ),
                   )
     )
 

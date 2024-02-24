@@ -9,6 +9,8 @@ import 'package:productivity_assistant/ui/widgets/my_text_field.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/app_user.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AddSheet extends StatefulWidget {
 
@@ -37,18 +39,19 @@ class _AddSheetState extends State<AddSheet> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("Add new Task ",style: AppTheme.bottomSheetTitleTextStyle,textAlign:
+          Text(AppLocalizations.of(context)!.addnewtask,style: AppTheme.bottomSheetTitleTextStyle,textAlign:
           TextAlign.center),
           SizedBox(height: height*0.02,),
-         MyTextField(hint: "enter task title",controller: titleController,),
+         MyTextField(hint: AppLocalizations.of(context)!.enterTaskTitle,controller: titleController,),
           SizedBox(height: height*0.01,),
-          MyTextField(hint: "enter task description",controller: descreptionController,),
+          MyTextField(hint: AppLocalizations.of(context)!.enterTaskDescription,controller: descreptionController,),
           SizedBox(height: height*0.05,),
 
           Padding(
             padding:  EdgeInsets.only(left: width*0.08),
-            child: Text("selected date ", style: AppTheme.bottomSheetTitleTextStyle.copyWith(
-              fontWeight: FontWeight.normal
+            child: Text(AppLocalizations.of(context)!.selectTime, style: AppTheme.bottomSheetTitleTextStyle.copyWith(
+              fontWeight: FontWeight.normal,
+              color: Color(0xff383838)
             ),),
           ),
           SizedBox(height: height*0.03,),
@@ -64,7 +67,7 @@ class _AddSheetState extends State<AddSheet> {
           Spacer(),
           ElevatedButton(onPressed: (){
             addToFireStore();
-          }, child: Text("ADD")),
+          }, child: Text(AppLocalizations.of(context)!.add)),
 
 
         ],

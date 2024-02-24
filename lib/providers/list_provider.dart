@@ -9,6 +9,13 @@ class ListProvider extends ChangeNotifier{
   List <TodoDm> todos=[];
    late DateTime calenderDate =DateTime.now();
 
+  String currentLocale ="en";
+
+  void setCurrentLocale (newLocale){
+    currentLocale= newLocale;
+    notifyListeners();
+  }
+
   void refreshTodos()async{
 
     CollectionReference<TodoDm> todosCollection =

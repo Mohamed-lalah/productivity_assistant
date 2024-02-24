@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:productivity_assistant/ui/screens/home/home.dart';
 import 'package:productivity_assistant/ui/utilities/dialog_screen.dart';
 
@@ -9,6 +10,7 @@ import '../../../../model/app_user.dart';
 import '../../../utilities/app_colors.dart';
 import '../../../utilities/app_theme.dart';
 import '../login/login_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String routeName = "register";
@@ -36,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     backgroundColor: AppColors.primiary,
     toolbarHeight: MediaQuery.of(context).size.height * .12,
     title:  Text(
-      "To Do",
+      AppLocalizations.of(context)!.title,
       style: AppTheme.appBarTextStyle,
     ),
   );
@@ -52,13 +54,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'ToDo Registration',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30),
+                child:  Text(
+                  AppLocalizations.of(context)!.register,
+                  style: GoogleFonts.almarai(
+                    textStyle: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 30),
+                  ),
                 )),
+
             SizedBox(
               height: 18,
             ),
@@ -66,9 +71,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: nameController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'User Name',
+                  labelText: AppLocalizations.of(context)!.userName,
                 ),
               ),
             ),
@@ -76,9 +81,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: emailController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'E-mail Address',
+                  labelText: AppLocalizations.of(context)!.emailAddress,
                 ),
               ),
             ),
@@ -87,9 +92,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: TextField(
                 obscureText: true,
                 controller: passwordController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Password',
+                  labelText: AppLocalizations.of(context)!.password,
                 ),
               ),
             ),
@@ -105,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     MaterialStateProperty.all<Color>(AppColors.primiary),
                   ),
                   child:  Text(
-                    'Register',
+                    AppLocalizations.of(context)!.register,
                     style: AppTheme.appBarTextStyle,
                   ),
                   onPressed: () {
@@ -115,10 +120,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text('Do you have account?'),
+                 Text(AppLocalizations.of(context)!.doYouHaveAccount),
                 TextButton(
-                  child: const Text(
-                    'Sign in',
+                  child:  Text(
+                    AppLocalizations.of(context)!.signIn,
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
@@ -153,7 +158,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
       on FirebaseAuthException catch (error){
       hideLoading(context);
-        showErrorDialog(error.message??"Please try again later", context);
+        showErrorDialog(error.message??AppLocalizations.of(context)!.pleaseTryAgainLater, context);
 
     }
 

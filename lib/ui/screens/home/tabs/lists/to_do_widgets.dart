@@ -9,6 +9,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../model/app_user.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ToDoWidgets extends StatelessWidget {
   final TodoDm model ;
    ToDoWidgets({required this.model});
@@ -40,7 +41,7 @@ class ToDoWidgets extends StatelessWidget {
                    ,backgroundColor: Colors.red,
                    foregroundColor: Colors.white,
                    icon: Icons.delete,
-                 label: "delete ",
+                 label: AppLocalizations.of(context)!.delete,
                  borderRadius: BorderRadius.circular(12),
                  )
               ]
@@ -77,7 +78,7 @@ class ToDoWidgets extends StatelessWidget {
                 ),
                  ),
                 Spacer(),
-                model.isDone? const Text("Done!",style: TextStyle(color: Color(0xff61E757),
+                model.isDone?  Text(AppLocalizations.of(context)!.done,style: TextStyle(color: Color(0xff61E757),
                 fontWeight: FontWeight.w700,fontSize: 22),)
                 :InkWell(
                  onTap: (){

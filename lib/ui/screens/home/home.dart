@@ -41,7 +41,6 @@ class _HomeState extends State<Home> {
   }
 
   PreferredSizeWidget buildAppBar () => AppBar(
-    title:  Text("Welcome , ${AppUser.currentUser!.userName} "),
     actions: [
       InkWell(
           onTap: (){
@@ -51,7 +50,7 @@ class _HomeState extends State<Home> {
           },
           child: Icon(Icons.login_outlined))
     ],
-    toolbarHeight: height*0.1,
+    toolbarHeight: height*0.05,
 
   );
 

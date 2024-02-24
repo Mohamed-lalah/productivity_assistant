@@ -6,40 +6,105 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 
 abstract class AppTheme {
 
-  static  TextStyle appBarTextStyle= TextStyle(
-    fontWeight: FontWeight.bold,
+  static  TextStyle appBarTextStyle=
+  GoogleFonts.almarai(
+    textStyle:  TextStyle(
+      fontWeight: FontWeight.bold,
       fontSize: 22,
       color: AppColors.white,
+    )
   );
 
-  static  TextStyle taskTitleTextStyle= TextStyle(
+
+
+  static  TextStyle taskTitleTextStyle=
+  GoogleFonts.poppins(textStyle:TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 22,
     color: AppColors.primiary,
-  );
+  ) )
+  ;
 
-  static  TextStyle taskDiscreptionTextStyle= TextStyle(
+  static  TextStyle taskDiscreptionTextStyle=GoogleFonts.poppins(textStyle:TextStyle(
     fontWeight: FontWeight.normal,
     fontSize: 14,
     color: AppColors.lightBlack,
-  );
+  ) );
 
-  static  TextStyle bottomSheetTitleTextStyle= TextStyle(
+
+
+  static  TextStyle bottomSheetTitleTextStyle= GoogleFonts.poppins(textStyle:TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20,
     color: AppColors.black,
-  );
+  ) );
 
-  static  TextStyle bottomSheetHintTextStyle=  TextStyle(
+  static  TextStyle bottomSheetHintTextStyle=  const TextStyle(
     fontWeight: FontWeight.normal,
     fontSize: 20,
     color: AppColors.grey,
   );
+
+  static  TextStyle editTitle=
+  GoogleFonts.poppins(
+    textStyle:TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 22,
+      color: AppColors.white,
+    ));
+
+  static  TextStyle editTask=
+  GoogleFonts.poppins(
+    textStyle: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      color: AppColors.black,
+    )
+  );
+
+
+  static  TextStyle hintTitle=
+  GoogleFonts.inter(
+      textStyle: const TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 20,
+        color: AppColors.black,
+      )
+  );
+
+  static  TextStyle timeEdit=
+  GoogleFonts.inter(
+      textStyle: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 18,
+        color: AppColors.grey,
+      )
+  );
+
+  static  TextStyle language=
+  GoogleFonts.inter(
+      textStyle: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 17,
+        color: AppColors.primiary,
+      )
+  );
+
+  static  TextStyle mode=
+  GoogleFonts.poppins(
+      textStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 14,
+        color: AppColors.black,
+      )
+  );
+
 
 
 
@@ -51,8 +116,6 @@ abstract class AppTheme {
       elevation: 0,
       titleTextStyle: appBarTextStyle,
     ),
-
-
 
     scaffoldBackgroundColor: AppColors.accent,
 
