@@ -45,9 +45,9 @@ class MyApp extends StatelessWidget {
     provider= Provider.of(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
-      theme: ThemeData(),
-        darkTheme: ThemeData(),
+      themeMode:provider.currentTheme,
+      theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
 
         supportedLocales: [
           Locale('en'), // English

@@ -109,32 +109,19 @@ abstract class AppTheme {
 
 
   static ThemeData lightTheme= ThemeData(
-    primaryColor: AppColors.primiary,
-
+     primaryColor: AppColors.primiary,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primiary,
       elevation: 0,
       titleTextStyle: appBarTextStyle,
     ),
-
-    scaffoldBackgroundColor: AppColors.accent,
-
+     scaffoldBackgroundColor: AppColors.accent,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       shape: StadiumBorder(side: BorderSide(
         color: AppColors.white,
         width: 4
       ))
     ),
-  );
-  static ThemeData darkTheme= ThemeData(
-    primaryColor: AppColors.primiary,
-
-    appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.primiary,
-        elevation: 0,
-        titleTextStyle: appBarTextStyle
-    ),
-
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedIconTheme: IconThemeData(size: 26),
       unselectedIconTheme: IconThemeData(size: 26),
@@ -143,7 +130,32 @@ abstract class AppTheme {
       selectedItemColor: AppColors.primiary,
       unselectedItemColor: AppColors.grey,
     ),
-    scaffoldBackgroundColor: AppColors.accent,
+  );
+
+
+  static ThemeData darkTheme= ThemeData(
+    primaryColor: AppColors.primiary,
+    scaffoldBackgroundColor: AppColors.primiaryDark,
+    appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.primiary,
+        elevation: 0,
+        titleTextStyle: appBarTextStyle
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedIconTheme: IconThemeData(size: 26),
+      unselectedIconTheme: IconThemeData(size: 26),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      selectedItemColor: AppColors.primiaryDark,
+      unselectedItemColor: AppColors.grey,
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        shape: StadiumBorder(side: BorderSide(
+            color: AppColors.accentDark,
+            width: 4
+        ))
+    ),
+
   );
 
 

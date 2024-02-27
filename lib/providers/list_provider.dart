@@ -11,8 +11,14 @@ class ListProvider extends ChangeNotifier{
 
   String currentLocale ="en";
 
+  ThemeMode currentTheme = ThemeMode.light;
+
   void setCurrentLocale (newLocale){
     currentLocale= newLocale;
+    notifyListeners();
+  }
+  void setCurrentMode (ThemeMode newMode){
+    currentTheme=newMode;
     notifyListeners();
   }
 

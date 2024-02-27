@@ -110,9 +110,16 @@ class _SettingTabState extends State<SettingTab> {
                     style: AppTheme.language,
                     value: themeChoose,
                     onChanged: (newvalue){
+                      themeChoose=newvalue as String;
+                      print('$themeChoose');
+                  if (themeChoose=="light") {
+                        provider.setCurrentMode(ThemeMode.light);
+                      }
+                      else if (themeChoose=="dark"){
+                        provider.setCurrentMode(ThemeMode.dark);
+                      }
                       setState(() {});
-                      themeChoose=newvalue as String  ;
-                    },              items: listThemes.map((valueItem) {
+                    },   items: listThemes.map((valueItem) {
                     return DropdownMenuItem(
                         value:  valueItem,
                         child: Padding(

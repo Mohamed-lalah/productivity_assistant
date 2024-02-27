@@ -29,7 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   PreferredSizeWidget buildAppBar() => AppBar(
-    backgroundColor: AppColors.primiary,
     toolbarHeight: MediaQuery.of(context).size.height * .12,
     title:  Text(
      AppLocalizations.of(context)!.title,
