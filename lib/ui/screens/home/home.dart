@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
           },
           child: Icon(Icons.login_outlined))
     ],
-    toolbarHeight: height*0.07,
+    toolbarHeight: height*0.08,
 
   );
 

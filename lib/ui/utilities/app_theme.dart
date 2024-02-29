@@ -113,6 +113,7 @@ abstract class AppTheme {
       titleLarge: bottomSheetTitleTextStyle,
         titleSmall: bottomSheetHintTextStyle,
       titleMedium: taskDiscreptionTextStyle,
+      displayLarge: mode,
     ),
      primaryColor: AppColors.primiary,
     appBarTheme: AppBarTheme(
@@ -147,6 +148,9 @@ abstract class AppTheme {
         color: AppColors.white
       ),
       titleMedium: taskDiscreptionTextStyle.copyWith(color: AppColors.white),
+      displayLarge: mode.copyWith(
+        color: AppColors.white
+      )
 
 
     ),

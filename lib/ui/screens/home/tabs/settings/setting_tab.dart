@@ -44,7 +44,7 @@ class _SettingTabState extends State<SettingTab> {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding:  EdgeInsets.only(left: width*0.11,top: height*0.03),
-                    child:  Text(AppLocalizations.of(context)!.language,style: AppTheme.mode,),
+                    child:  Text(AppLocalizations.of(context)!.language,style: Theme.of(context).textTheme.displayLarge),
                   )),
               Padding(
                 padding:  EdgeInsets.all(30),
@@ -93,7 +93,7 @@ class _SettingTabState extends State<SettingTab> {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding:  EdgeInsets.only(left: width*0.11,top: height*0.04),
-                    child:  Text(AppLocalizations.of(context)!.mode,style: AppTheme.mode,),
+                    child:  Text(AppLocalizations.of(context)!.mode,style: Theme.of(context).textTheme.displayLarge),
                   )),
               Padding(
                 padding: const EdgeInsets.all(32),
