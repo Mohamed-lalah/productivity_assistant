@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
           },
           child: Icon(Icons.login_outlined))
     ],
-    toolbarHeight: height*0.05,
+    toolbarHeight: height*0.07,
 
   );
 
@@ -60,17 +60,22 @@ class _HomeState extends State<Home> {
     clipBehavior: Clip.hardEdge,
 
 
-    child: BottomNavigationBar(
-      onTap: (index){
-       currentSelectedTabIndex=index;
-       setState(() {});
-      },
-        currentIndex: currentSelectedTabIndex,
-        items: const [
-          BottomNavigationBarItem(icon:  Icon(Icons.menu),label: "",),
-          BottomNavigationBarItem(icon:  Icon(Icons.settings ),label: "",),
-    ]
+    child: Theme(
+      data: ThemeData(
+        canvasColor: provider.theme=="light" ? AppColors.white : AppColors.accentDark
+      ),
+      child: BottomNavigationBar(
+        onTap: (index){
+         currentSelectedTabIndex=index;
+         setState(() {});
+        },
+          currentIndex: currentSelectedTabIndex,
+          items: const [
+            BottomNavigationBarItem(icon:  Icon(Icons.menu),label: "",),
+            BottomNavigationBarItem(icon:  Icon(Icons.settings ),label: "",),
+      ]
   ),
+    ),
   );
 
   Widget fab()=> FloatingActionButton(onPressed: (){

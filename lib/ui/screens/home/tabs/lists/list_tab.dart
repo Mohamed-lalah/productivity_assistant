@@ -33,7 +33,7 @@ class _ListTabState extends State<ListTab> {
     return Column(
       children: [
         SizedBox(
-          height: height*0.129,
+          height: height*0.15,
           child: Stack(
             children: [
               Column(
@@ -47,7 +47,7 @@ class _ListTabState extends State<ListTab> {
                   Expanded(
                     flex: 7,
                     child: Container(
-                      color: AppColors.accent,
+                      color: provider.theme=="light" ? AppColors.accent : AppColors.primiaryDark,
                     ),
                   ),
                 ],
@@ -64,9 +64,9 @@ class _ListTabState extends State<ListTab> {
                 ,
                 leftMargin: 20,
                 monthColor: AppColors.white,
-                dayColor: AppColors.primiary,
-                activeDayColor: AppColors.primiary,
-                activeBackgroundDayColor: AppColors.white,
+                dayColor:  AppColors.white,
+                activeDayColor: provider.theme=="light" ? AppColors.primiary :AppColors.white,
+                activeBackgroundDayColor: provider.theme=="light" ? AppColors.white : AppColors.accentDark,
                 dotsColor:AppColors.transparent,
 
               ),

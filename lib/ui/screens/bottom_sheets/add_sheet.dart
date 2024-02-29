@@ -34,15 +34,16 @@ class _AddSheetState extends State<AddSheet> {
     provider= Provider.of(context);
 
     return Container(
-      height: height*0.45,
+      height: height*0.46,
+      color: provider.theme=="light"? AppColors.white: AppColors.accentDark,
       padding: EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(AppLocalizations.of(context)!.addnewtask,style: AppTheme.bottomSheetTitleTextStyle,textAlign:
+          Text(AppLocalizations.of(context)!.addnewtask,style: Theme.of(context).textTheme.titleLarge,textAlign:
           TextAlign.center),
           SizedBox(height: height*0.02,),
-         MyTextField(hint: AppLocalizations.of(context)!.enterTaskTitle,controller: titleController,),
+         MyTextField(hint: AppLocalizations.of(context)!.enterTaskTitle , controller: titleController,),
           SizedBox(height: height*0.01,),
           MyTextField(hint: AppLocalizations.of(context)!.enterTaskDescription,controller: descreptionController,),
           SizedBox(height: height*0.05,),
@@ -51,7 +52,7 @@ class _AddSheetState extends State<AddSheet> {
             padding:  EdgeInsets.only(left: width*0.08),
             child: Text(AppLocalizations.of(context)!.selectTime, style: AppTheme.bottomSheetTitleTextStyle.copyWith(
               fontWeight: FontWeight.normal,
-              color: Color(0xff383838)
+              color:provider.theme=="light"? Color(0xff383838): Color(0xffC3C3C3)
             ),),
           ),
           SizedBox(height: height*0.03,),

@@ -10,8 +10,9 @@ class ListProvider extends ChangeNotifier{
    late DateTime calenderDate =DateTime.now();
 
   String currentLocale ="en";
-
+  String locale ="English";
   ThemeMode currentTheme = ThemeMode.light;
+  String theme = "light";
 
   void setCurrentLocale (newLocale){
     currentLocale= newLocale;

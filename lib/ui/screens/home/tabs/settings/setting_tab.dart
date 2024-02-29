@@ -19,11 +19,12 @@ class _SettingTabState extends State<SettingTab> {
     String valueChoose="English";
     List  listLanguages= ["English", "Español"];
     List listThemes= [ "light","dark"];
-    String themeChoose="light";
+     String themeChoose="light";
   @override
   Widget build(BuildContext context) {
-
     provider= Provider.of(context);
+    themeChoose=provider.theme;
+    valueChoose=provider.locale;
     double height=  MediaQuery.of(context).size.height;
     double width=  MediaQuery.of(context).size.width;
     return Scaffold(
@@ -68,10 +69,13 @@ class _SettingTabState extends State<SettingTab> {
                       setState(() {});
                         if (newvalue=="English"){
                           provider.setCurrentLocale("en");
-
+                          provider.locale="English";
+                          setState(() {});
                         }
                         else if (newvalue=="Español") {
                           provider.setCurrentLocale("es");
+                          provider.locale="Español";
+                          setState(() {});
                         }
     },              items: listLanguages.map((valueItem) {
                          return DropdownMenuItem(
@@ -111,12 +115,20 @@ class _SettingTabState extends State<SettingTab> {
                     value: themeChoose,
                     onChanged: (newvalue){
                       themeChoose=newvalue as String;
-                      print('$themeChoose');
+                      setState(() {});
                   if (themeChoose=="light") {
                         provider.setCurrentMode(ThemeMode.light);
+                        provider.theme="light";
+                        setState(() {
+
+                        });
                       }
                       else if (themeChoose=="dark"){
                         provider.setCurrentMode(ThemeMode.dark);
+                        provider.theme="dark";
+                        setState(() {
+
+                        });
                       }
                       setState(() {});
                     },   items: listThemes.map((valueItem) {

@@ -52,7 +52,7 @@ class ToDoWidgets extends StatelessWidget {
             width: MediaQuery.of(context).size.width*0.85,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              color: AppColors.white
+              color:  provider.theme=="light"? AppColors.white : AppColors.accentDark
             ),
             child:  Row(
               children: [
@@ -73,7 +73,7 @@ class ToDoWidgets extends StatelessWidget {
                      Text(model.title,style: AppTheme.taskTitleTextStyle.copyWith(color: Color(0xff61E757)),):
                      Text(model.title,style: AppTheme.taskTitleTextStyle,),
                       SizedBox(height: height*0.01,),
-                      Text(model.desc,style: AppTheme.taskDiscreptionTextStyle)
+                      Text(model.desc,style: Theme.of(context).textTheme.titleMedium)
                     ],
                 ),
                  ),

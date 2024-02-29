@@ -109,6 +109,11 @@ abstract class AppTheme {
 
 
   static ThemeData lightTheme= ThemeData(
+    textTheme: TextTheme(
+      titleLarge: bottomSheetTitleTextStyle,
+        titleSmall: bottomSheetHintTextStyle,
+      titleMedium: taskDiscreptionTextStyle,
+    ),
      primaryColor: AppColors.primiary,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primiary,
@@ -134,6 +139,17 @@ abstract class AppTheme {
 
 
   static ThemeData darkTheme= ThemeData(
+    textTheme: TextTheme(
+        titleLarge: bottomSheetTitleTextStyle.copyWith(
+          color: AppColors.white
+        ),
+      titleSmall: bottomSheetHintTextStyle.copyWith(
+        color: AppColors.white
+      ),
+      titleMedium: taskDiscreptionTextStyle.copyWith(color: AppColors.white),
+
+
+    ),
     primaryColor: AppColors.primiary,
     scaffoldBackgroundColor: AppColors.primiaryDark,
     appBarTheme: AppBarTheme(
@@ -146,7 +162,7 @@ abstract class AppTheme {
       unselectedIconTheme: IconThemeData(size: 26),
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      selectedItemColor: AppColors.primiaryDark,
+      selectedItemColor: AppColors.primiary,
       unselectedItemColor: AppColors.grey,
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
