@@ -1,7 +1,7 @@
 {
   "title" : "asistente de productividad",
-  "login" : "acceso",
-  "register" : "registro",
+  "login" : "Acceso",
+  "register" : "Registro",
   "add" : "agregar",
   "done" : "hecho",
   "delete" : "borrar",
@@ -22,10 +22,11 @@
   "userName"   : "Nombre de usuario",
   "emailAddress"   : " Dirección de correo electrónico",
   "password"   : "Contraseña",
-  "do you have account"   : "¿Tienes cuenta? ",
+  "doYouHaveAccount"   : "¿Tienes cuenta? ",
   "signIn"   : "Iniciar sesión",
   "forgotPassword" : "¿Has olvidado tu contraseña?",
   "doesnotHaveAccount" : "no tienes cuenta?",
   "createOne" : "crea uno",
-  "pleaseTryAgainLater" : "please try again later "
+  "pleaseTryAgainLater" : "please try again later ",
+  "hello": "hola"
 }

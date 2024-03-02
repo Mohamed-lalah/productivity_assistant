@@ -27,5 +27,7 @@
   "forgotPassword" : "Forgot passowrd?",
   "doesnotHaveAccount" : "don't have account?",
   "createOne": "Create one",
-  "pleaseTryAgainLater" : "please try again later"
+  "pleaseTryAgainLater" : "please try again later",
+  "hello": "Hello"
+
 }

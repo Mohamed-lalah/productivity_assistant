@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:productivity_assistant/providers/setting_provider.dart';
+import 'package:productivity_assistant/shared.dart';
+import 'package:productivity_assistant/ui/screens/home/tabs/settings/setting_tab.dart';
 
 import '../model/app_user.dart';
 import '../model/todo_model.dart';
+
 
 class ListProvider extends ChangeNotifier{
 
@@ -14,14 +18,27 @@ class ListProvider extends ChangeNotifier{
   ThemeMode currentTheme = ThemeMode.light;
   String theme = "light";
 
+  void init () {
+    // locale here is = en
+    String? locale  = Shared.getLocale();
+    setCurrentLocale(locale??"en");
+    String theme = Shared.getMode();
+     theme =="light" ? setCurrentMode(ThemeMode.light) : setCurrentMode(ThemeMode.dark);
+  }
+
   void setCurrentLocale (newLocale){
     currentLocale= newLocale;
+    Shared.setLocale(currentLocale);
     notifyListeners();
   }
+
   void setCurrentMode (ThemeMode newMode){
     currentTheme=newMode;
+    newMode==ThemeMode.light ? Shared.setTheme("light") : Shared.setTheme("dark");
     notifyListeners();
   }
+
+
 
   void refreshTodos()async{
 

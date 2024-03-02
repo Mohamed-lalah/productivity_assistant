@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_assistant/providers/list_provider.dart';
 import 'package:productivity_assistant/providers/setting_provider.dart';
+import 'package:productivity_assistant/shared.dart';
 import 'package:productivity_assistant/ui/screens/auth/login/login_screen.dart';
 import 'package:productivity_assistant/ui/screens/auth/register/register_screen.dart';
 import 'package:productivity_assistant/ui/screens/edit_task/edit_task_screen.dart';
@@ -14,23 +15,26 @@ import 'firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
+
+
+  Shared.preferences= await SharedPreferences.getInstance();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   FirebaseFirestore.instance.settings =
       Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
   
   await FirebaseFirestore.instance.enableNetwork();
 
-
-
   runApp(ChangeNotifierProvider(
       create: (_) {
-        return ListProvider();
+        return ListProvider()..init();
       },
       child:  MyApp()));
 }

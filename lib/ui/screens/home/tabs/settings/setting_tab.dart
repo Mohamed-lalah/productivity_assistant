@@ -5,6 +5,7 @@ import 'package:productivity_assistant/providers/setting_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../providers/list_provider.dart';
+import '../../../../../shared.dart';
 import '../../../../utilities/app_colors.dart';
 import '../../../../utilities/app_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,15 +17,13 @@ class SettingTab extends StatefulWidget {
 
 class _SettingTabState extends State<SettingTab> {
     late ListProvider provider ;
-    String valueChoose="English";
+     String valueChoose= Shared.getLangChose()??"English";
     List  listLanguages= ["English", "Español"];
     List listThemes= [ "light","dark"];
-     String themeChoose="light";
+     String themeChoose=Shared.getThemeChose()??"light";
   @override
   Widget build(BuildContext context) {
     provider= Provider.of(context);
-    themeChoose=provider.theme;
-    valueChoose=provider.locale;
     double height=  MediaQuery.of(context).size.height;
     double width=  MediaQuery.of(context).size.width;
     return Scaffold(
@@ -66,6 +65,7 @@ class _SettingTabState extends State<SettingTab> {
                     value: valueChoose,
                       onChanged: (newvalue){
                         valueChoose=newvalue as String  ;
+                        Shared.setLangChose(newvalue);
                       setState(() {});
                         if (newvalue=="English"){
                           provider.setCurrentLocale("en");
@@ -115,6 +115,7 @@ class _SettingTabState extends State<SettingTab> {
                     value: themeChoose,
                     onChanged: (newvalue){
                       themeChoose=newvalue as String;
+                      Shared.setThemeChose(newvalue);
                       setState(() {});
                   if (themeChoose=="light") {
                         provider.setCurrentMode(ThemeMode.light);

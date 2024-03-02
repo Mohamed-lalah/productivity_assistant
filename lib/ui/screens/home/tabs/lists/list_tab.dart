@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../providers/list_provider.dart';
 class ListTab extends StatefulWidget {
-
+  static const String routeName = "listTab";
   @override
   State<ListTab> createState() => _ListTabState();
 }
@@ -47,7 +47,7 @@ class _ListTabState extends State<ListTab> {
                   Expanded(
                     flex: 7,
                     child: Container(
-                      color: provider.theme=="light" ? AppColors.accent : AppColors.primiaryDark,
+                      color: provider.currentTheme==ThemeMode.light ? AppColors.accent : AppColors.primiaryDark,
                     ),
                   ),
                 ],
@@ -65,8 +65,8 @@ class _ListTabState extends State<ListTab> {
                 leftMargin: 20,
                 monthColor: AppColors.white,
                 dayColor:  AppColors.white,
-                activeDayColor: provider.theme=="light" ? AppColors.primiary :AppColors.white,
-                activeBackgroundDayColor: provider.theme=="light" ? AppColors.white : AppColors.accentDark,
+                activeDayColor: provider.currentTheme==ThemeMode.light ? AppColors.primiary :AppColors.white,
+                activeBackgroundDayColor: provider.currentTheme==ThemeMode.light ? AppColors.white : AppColors.accentDark,
                 dotsColor:AppColors.transparent,
 
               ),

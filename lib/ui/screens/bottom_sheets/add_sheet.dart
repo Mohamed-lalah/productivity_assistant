@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity_assistant/model/todo_model.dart';
 import 'package:productivity_assistant/providers/list_provider.dart';
+import 'package:productivity_assistant/ui/screens/home/tabs/lists/list_tab.dart';
 import 'package:productivity_assistant/ui/utilities/app_colors.dart';
 import 'package:productivity_assistant/ui/utilities/app_theme.dart';
 import 'package:productivity_assistant/ui/widgets/my_text_field.dart';
@@ -68,6 +69,8 @@ class _AddSheetState extends State<AddSheet> {
           Spacer(),
           ElevatedButton(onPressed: (){
             addToFireStore();
+            Navigator.pop(context);
+            provider.refreshTodos();
           }, child: Text(AppLocalizations.of(context)!.add)),
 
 
@@ -88,9 +91,11 @@ class _AddSheetState extends State<AddSheet> {
       "date" : selectedDate,
       "id" : newEmptyDoc.id,
       "isDone": false,
-    });
-    provider.refreshTodos();
-    Navigator.pop(context);
+    }).then((value) {
+     provider.refreshTodos();
+     Navigator.pop(context);
+   });
+
   }
 
   void showMyDatePicker()async{

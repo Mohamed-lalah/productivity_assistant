@@ -10,9 +10,15 @@ import 'package:provider/provider.dart';
 
 import '../../../../../model/app_user.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-class ToDoWidgets extends StatelessWidget {
+class ToDoWidgets extends StatefulWidget {
   final TodoDm model ;
    ToDoWidgets({required this.model});
+
+  @override
+  State<ToDoWidgets> createState() => _ToDoWidgetsState();
+}
+
+class _ToDoWidgetsState extends State<ToDoWidgets> {
   late ListProvider provider ;
 
   @override
@@ -23,7 +29,7 @@ class ToDoWidgets extends StatelessWidget {
     return InkWell(
       onTap: (){
         Navigator.pushNamed(context, EditTaskScreen.routeName,
-        arguments: model);
+        arguments: widget.model);
       },
       child: Container(
         padding:  EdgeInsets.all(height*0.02),
@@ -34,8 +40,9 @@ class ToDoWidgets extends StatelessWidget {
               children:[
                SlidableAction(onPressed: (_){
                  CollectionReference todosCollection = AppUser.getCurrentUserTodosCollection();
-                 todosCollection.doc(model.id).delete().then((value) {
+                 todosCollection.doc(widget.model.id).delete().timeout(Duration(milliseconds: 100),onTimeout: (){
                    provider.refreshTodos();
+                   setState(() {});
                  });
                }
                    ,backgroundColor: Colors.red,
@@ -52,7 +59,7 @@ class ToDoWidgets extends StatelessWidget {
             width: MediaQuery.of(context).size.width*0.85,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              color:  provider.theme=="light"? AppColors.white : AppColors.accentDark
+              color:  provider.currentTheme==ThemeMode.light? AppColors.white : AppColors.accentDark
             ),
             child:  Row(
               children: [
@@ -60,7 +67,7 @@ class ToDoWidgets extends StatelessWidget {
                   padding:  EdgeInsets.only(bottom: height*0.01,top: height*0.01),
                   child: VerticalDivider(
                       thickness: 3,
-                      color:  model.isDone? AppColors.selectedColor : AppColors.primiary
+                      color:  widget.model.isDone? AppColors.selectedColor : AppColors.primiary
                   ),
                 ),
                  Padding(
@@ -69,21 +76,22 @@ class ToDoWidgets extends StatelessWidget {
                      mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                     model.isDone?
-                     Text(model.title,style: AppTheme.taskTitleTextStyle.copyWith(color: Color(0xff61E757)),):
-                     Text(model.title,style: AppTheme.taskTitleTextStyle,),
+                     widget.model.isDone?
+                     Text(widget.model.title,style: AppTheme.taskTitleTextStyle.copyWith(color: Color(0xff61E757)),):
+                     Text(widget.model.title,style: AppTheme.taskTitleTextStyle,),
                       SizedBox(height: height*0.01,),
-                      Text(model.desc,style: Theme.of(context).textTheme.titleMedium)
+                      Text(widget.model.desc,style: Theme.of(context).textTheme.titleMedium)
                     ],
                 ),
                  ),
                 Spacer(),
-                model.isDone?  Text(AppLocalizations.of(context)!.done,style: TextStyle(color: Color(0xff61E757),
+                widget.model.isDone?  Text(AppLocalizations.of(context)!.done,style: TextStyle(color: Color(0xff61E757),
                 fontWeight: FontWeight.w700,fontSize: 22),)
                 :InkWell(
                  onTap: (){
-                   model.isDone=true;
-                   provider.updateDocument(model);
+                   widget.model.isDone=true;
+                   provider.updateDocument(widget.model);
+                   setState(() {});
                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 18,vertical: 5),

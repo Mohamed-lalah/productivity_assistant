@@ -13,7 +13,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 abstract class AppTheme {
 
   static  TextStyle appBarTextStyle=
-  GoogleFonts.almarai(
+  GoogleFonts.elMessiri(
     textStyle:  TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 22,
@@ -105,6 +105,35 @@ abstract class AppTheme {
       )
   );
 
+  static  TextStyle bar=
+  GoogleFonts.poppins(
+      textStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 25,
+        color: AppColors.white,
+      )
+  );
+
+
+  static  TextStyle label=
+  GoogleFonts.poppins(
+      textStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+        color: AppColors.primiary,
+      )
+  );
+
+
+  static  TextStyle doesnot=
+  GoogleFonts.poppins(
+      textStyle: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 15,
+        color: AppColors.black,
+      )
+  );
+
 
 
 
@@ -114,6 +143,9 @@ abstract class AppTheme {
         titleSmall: bottomSheetHintTextStyle,
       titleMedium: taskDiscreptionTextStyle,
       displayLarge: mode,
+      labelMedium: bar,
+      headlineLarge: label,
+      displayMedium: doesnot
     ),
      primaryColor: AppColors.primiary,
     appBarTheme: AppBarTheme(
@@ -150,7 +182,16 @@ abstract class AppTheme {
       titleMedium: taskDiscreptionTextStyle.copyWith(color: AppColors.white),
       displayLarge: mode.copyWith(
         color: AppColors.white
-      )
+      ),
+        labelMedium: bar.copyWith(
+          color: AppColors.primiaryDark
+        ),
+        headlineLarge: label.copyWith(
+          color: AppColors.white
+        ),
+        displayMedium: doesnot.copyWith(
+          color: AppColors.white
+        )
 
 
     ),

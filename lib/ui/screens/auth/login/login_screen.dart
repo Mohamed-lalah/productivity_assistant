@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:productivity_assistant/providers/list_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../model/app_user.dart';
 import '../../../utilities/app_colors.dart';
 import '../../../utilities/app_theme.dart';
@@ -22,9 +24,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  late ListProvider provider;
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of(context);
     return Scaffold(appBar: buildAppBar(), body: buildMyBody());
   }
 
@@ -46,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.all(10),
                 child:  Text(
                     AppLocalizations.of(context)!.login,
-                  style: GoogleFonts.almarai(
+                  style: GoogleFonts.habibi(
                     textStyle: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.w500,
@@ -61,8 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
               child: TextField(
                 controller: emailController,
                 decoration:  InputDecoration(
+                  filled:  provider.currentTheme==ThemeMode.dark ? true : false,
+                  fillColor: provider.currentTheme==ThemeMode.dark ? AppColors.primiary :AppColors.transparent,
                   border: OutlineInputBorder(),
                   labelText: AppLocalizations.of(context)!.emailAddress,
+                  labelStyle: Theme.of(context).textTheme.headlineLarge
                 ),
               ),
             ),
@@ -72,17 +79,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 controller: passwordController,
                 decoration:  InputDecoration(
+                    filled:  provider.currentTheme==ThemeMode.dark ? true : false,
+                    fillColor: provider.currentTheme==ThemeMode.dark ? AppColors.primiary :AppColors.transparent,
                   border: OutlineInputBorder(),
                   labelText: AppLocalizations.of(context)!.password,
+                    labelStyle: Theme.of(context).textTheme.headlineLarge
+
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {},
-              child:  Text(
-              AppLocalizations.of(context)!.forgotPassword,
-              ),
-            ),
+            SizedBox(height: 50,),
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -102,7 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                 Text(AppLocalizations.of(context)!.doesnotHaveAccount),
+                 Text(AppLocalizations.of(context)!.doesnotHaveAccount,
+                   style:Theme.of(context).textTheme.displayMedium
+                   ,),
                 TextButton(
                   child:  Text(
                     AppLocalizations.of(context)!.createOne,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:productivity_assistant/providers/list_provider.dart';
 import 'package:productivity_assistant/ui/utilities/app_assets.dart';
+import 'package:provider/provider.dart';
 
 import '../home/home.dart';
 
@@ -12,6 +14,7 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  late ListProvider provider;
   @override
   void initState() {
     // TODO: implement initState
@@ -22,9 +25,9 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-
+   provider= Provider.of(context);
     return Scaffold(
-      body: Image.asset(AppAssets.spalsh),
+      body: provider.theme =="light" ?Image.asset(AppAssets.spalsh):Image.asset(AppAssets.spalshDark) ,
     );
   }
 }

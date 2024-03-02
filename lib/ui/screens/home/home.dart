@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:productivity_assistant/model/app_user.dart';
 import 'package:productivity_assistant/ui/screens/auth/login/login_screen.dart';
@@ -8,6 +10,8 @@ import 'package:provider/provider.dart';
 
 import '../../../providers/list_provider.dart';
 import '../../utilities/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../utilities/app_theme.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 class Home extends StatefulWidget {
@@ -29,6 +33,7 @@ class _HomeState extends State<Home> {
     provider= Provider.of(context);
 
 
+
     return Scaffold(
       body: currentSelectedTabIndex ==0 ? ListTab() : SettingTab(),
       appBar:buildAppBar (),
@@ -41,6 +46,7 @@ class _HomeState extends State<Home> {
   }
 
   PreferredSizeWidget buildAppBar () => AppBar(
+    title: Text("Hi , ${AppUser.currentUser!.userName}",style: Theme.of(context).textTheme.labelMedium,),
     actions: [
       InkWell(
           onTap: (){
@@ -50,7 +56,7 @@ class _HomeState extends State<Home> {
           },
           child: Icon(Icons.login_outlined))
     ],
-    toolbarHeight: height*0.08,
+    toolbarHeight: height*0.0999,
 
   );
 
@@ -62,7 +68,7 @@ class _HomeState extends State<Home> {
 
     child: Theme(
       data: ThemeData(
-        canvasColor: provider.theme=="light" ? AppColors.white : AppColors.accentDark
+        canvasColor:provider.currentTheme==ThemeMode.light ? AppColors.white : AppColors.accentDark
       ),
       child: BottomNavigationBar(
         onTap: (index){

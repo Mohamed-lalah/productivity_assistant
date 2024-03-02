@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:productivity_assistant/ui/screens/home/home.dart';
 import 'package:productivity_assistant/ui/utilities/dialog_screen.dart';
+import 'package:provider/provider.dart';
 
 
 import '../../../../model/app_user.dart';
+import '../../../../providers/list_provider.dart';
 import '../../../utilities/app_colors.dart';
 import '../../../utilities/app_theme.dart';
 import '../login/login_screen.dart';
@@ -25,9 +27,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  late ListProvider provider;
 
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of(context);
     return Scaffold(
       appBar: buildAppBar(),
       body: buildMyBody(),
@@ -55,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: const EdgeInsets.all(10),
                 child:  Text(
                   AppLocalizations.of(context)!.register,
-                  style: GoogleFonts.almarai(
+                  style: GoogleFonts.habibi(
                     textStyle: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.w500,
@@ -66,13 +70,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(
               height: 18,
             ),
+
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: nameController,
                 decoration:  InputDecoration(
+                    filled:  provider.currentTheme==ThemeMode.dark ? true : false,
+                    fillColor: provider.currentTheme==ThemeMode.dark ? AppColors.primiary :AppColors.transparent,
                   border: OutlineInputBorder(),
                   labelText: AppLocalizations.of(context)!.userName,
+                    labelStyle: Theme.of(context).textTheme.headlineLarge
                 ),
               ),
             ),
@@ -81,8 +89,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: TextField(
                 controller: emailController,
                 decoration:  InputDecoration(
+                    filled:  provider.currentTheme==ThemeMode.dark ? true : false,
+                    fillColor: provider.currentTheme==ThemeMode.dark ? AppColors.primiary :AppColors.transparent,
                   border: OutlineInputBorder(),
                   labelText: AppLocalizations.of(context)!.emailAddress,
+                    labelStyle: Theme.of(context).textTheme.headlineLarge
                 ),
               ),
             ),
@@ -92,13 +103,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 obscureText: true,
                 controller: passwordController,
                 decoration:  InputDecoration(
+                    filled:  provider.currentTheme==ThemeMode.dark ? true : false,
+                    fillColor: provider.currentTheme==ThemeMode.dark ? AppColors.primiary :AppColors.transparent,
                   border: OutlineInputBorder(),
                   labelText: AppLocalizations.of(context)!.password,
+                    labelStyle: Theme.of(context).textTheme.headlineLarge
                 ),
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 50,
             ),
             Container(
                 height: 50,
@@ -119,7 +133,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                 Text(AppLocalizations.of(context)!.doYouHaveAccount),
+                 Text(AppLocalizations.of(context)!.doYouHaveAccount,style:
+                       Theme.of(context).textTheme.displayMedium
+                 ),
                 TextButton(
                   child:  Text(
                     AppLocalizations.of(context)!.signIn,

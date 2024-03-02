@@ -124,6 +124,10 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                   ElevatedButton(
                       onPressed: (){
                         editProvider.updateDocument(item);
+                        setState(() {});
+                        editProvider.refreshTodos();
+                        Navigator.pop(context);
+                        Navigator.pushReplacementNamed(context, ListTab.routeName);
                       },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
